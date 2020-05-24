@@ -4,12 +4,12 @@ using System.Text;
 
 namespace TaxPayer.Entities
 {
-    abstract class TaxPayer
+    abstract class TaxPayer_
     {
         public string Name { get; set; }
         public double AnualIncome { get; set; }
 
-        protected TaxPayer(string name, double anualIncome)
+        protected TaxPayer_(string name, double anualIncome)
         {
             Name = name;
             AnualIncome = anualIncome;

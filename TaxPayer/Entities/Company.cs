@@ -4,16 +4,27 @@ using System.Text;
 
 namespace TaxPayer.Entities
 {
-    class Company : TaxPayer
+    class Company : TaxPayer_
     {
-        public double HealthExpenditures { get; set; }
-        public Company(string name,double anualIncome, double healthExpenditures) : base(name,anualIncome)
+        public int NumberOfEmployees { get; set; }
+
+        public Company(string name, double anualIncome, int numberOfEmployees) : base(name, anualIncome)
         {
-            HealthExpenditures = healthExpenditures;
+            NumberOfEmployees = numberOfEmployees;
         }
+
         public override double Tax()
         {
-            throw new NotImplementedException();
+            double returnTax = 0.0;
+            if (NumberOfEmployees > 10)
+            {
+                returnTax = AnualIncome * 0.14;
+            }
+            else if (NumberOfEmployees >= 0)
+            {
+                returnTax = AnualIncome * 0.16;
+            }
+            return returnTax;
         }
     }
 }

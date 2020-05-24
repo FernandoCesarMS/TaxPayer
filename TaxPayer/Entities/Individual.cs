@@ -4,18 +4,29 @@ using System.Text;
 
 namespace TaxPayer.Entities
 {
-    class Individual : TaxPayer
+    class Individual : TaxPayer_
     {
-        public int NumberOfEmployees { get; set; }
-
-        public Individual(string name,double anualIncome, int numberOfEmployees) : base(name,anualIncome)
+        public double HealthExpenditures { get; set; }
+        public Individual(string name, double anualIncome, double healthExpenditures) : base(name, anualIncome)
         {
-            NumberOfEmployees = numberOfEmployees;
+            HealthExpenditures = healthExpenditures;
         }
-
         public override double Tax()
         {
-            throw new NotImplementedException();
+            double returnTax = 0.0;
+            if (AnualIncome >= 20000)
+            {
+                returnTax = AnualIncome * 0.25;
+            }
+            else
+            {
+                returnTax = AnualIncome * 0.15;
+            }
+            if (HealthExpenditures >= 0)
+            {
+                returnTax -= HealthExpenditures / 2.0;
+            }
+            return returnTax;
         }
     }
 }
